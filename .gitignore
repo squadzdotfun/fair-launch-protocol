@@ -1,0 +1,17 @@
+# build output
+target
+**/target
+
+# keys: never committed (local test wallets are generated per machine)
+.keys/
+*.keypair.json
+*-keypair.json
+
+# local validator data and scratch
+test-ledger/
+.anchor/
+node_modules/
+.env
+
+# integration tests and tools are kept separately (not part of this repo)
+/tests/

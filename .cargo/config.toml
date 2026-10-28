@@ -1,0 +1,4 @@
+# The on-chain toolchain (platform-tools v1.48) ships rustc/cargo 1.84.
+# Resolve dependencies to versions that still build there.
+[resolver]
+incompatible-rust-versions = "fallback"

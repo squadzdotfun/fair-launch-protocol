@@ -1,0 +1,37 @@
+[package]
+name = "fair-launch"
+version = "0.2.0"
+description = "Fair Launch Protocol: fair group launches on pump.fun"
+edition = "2021"
+publish = false
+rust-version = "1.84"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "fair_launch"
+
+[features]
+default = []
+cpi = ["no-entrypoint"]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+idl-build = ["anchor-lang/idl-build", "anchor-spl/idl-build"]
+# LOCAL TESTS ONLY: shrinks hours/days to seconds so time rules can be tested.
+short-time = []
+# DEVNET REHEARSAL ONLY: launch #1's creator is a devnet Squads vault instead of
+# the mainnet team vault. Never used for a mainnet build.
+devnet-squadz = []
+# MAINNET REHEARSAL ONLY (test C, founders 27 Oct): a throwaway copy of the mainnet build under its own program address,
+# with $SQUADZ's Meteora path at a tiny size (1 SOL graduation, 0.02 SOL launch fee) and test keys. Closed after the
+# test. Never the real deploy (scripts/check-build.sh tells the builds apart; deploy-mainnet.sh refuses this one).
+mainnet-rehearsal = []
+
+[dependencies]
+anchor-lang = { version = "=0.31.1", features = ["init-if-needed"] }
+anchor-spl = { version = "=0.31.1", default-features = false, features = ["token", "token_2022", "associated_token"] }
+bytemuck = { version = "1.14", features = ["derive", "min_const_generics"] }
+
+[lints.rust]
+# declare_program! expands to cfg(target_os = "solana") checks
+unexpected_cfgs = { level = "allow" }
