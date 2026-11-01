@@ -8,6 +8,20 @@
 //! forever. There are no admin keys.
 
 use anchor_lang::prelude::*;
+#[cfg(not(feature = "no-entrypoint"))]
+use solana_security_txt::security_txt;
+
+// Founders 28 Oct (option A): who to contact, stored inside the program. Links only: it can't change after the lock.
+#[cfg(not(feature = "no-entrypoint"))]
+security_txt! {
+    name: "Squadz Fair Launch Protocol",
+    project_url: "https://squadz.fun",
+    contacts: "email:security@squadz.fun,link:https://github.com/squadzdotfun/fair-launch-protocol/blob/main/SECURITY.md",
+    policy: "https://github.com/squadzdotfun/fair-launch-protocol/blob/main/SECURITY.md",
+    preferred_languages: "en",
+    source_code: "https://github.com/squadzdotfun/fair-launch-protocol",
+    auditors: "None"
+}
 
 pub mod constants;
 pub mod errors;

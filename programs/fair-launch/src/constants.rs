@@ -175,7 +175,11 @@ pub const SQUADZ_CREATOR: Pubkey = pubkey!("7BraH9py4siDyWhL3y2FYGWPz4fnZCoQ2BpQ
 /// buy-and-burn and Spotlight can be rehearsed with a multisig creator.
 #[cfg(all(feature = "devnet-squadz", not(feature = "short-time")))]
 pub const SQUADZ_CREATOR: Pubkey = pubkey!("25JXZmHvep719gjJ6u6vGgtUKJpXBYksBTz299Ebduj2");
-#[cfg(not(all(feature = "devnet-squadz", not(feature = "short-time"))))]
+/// Round 2 (founders 1 Nov): the first $SQUADZ lobby (nonce 0, `AGKpwt6K…xBVZ3`) expired unfilled on 31 Oct and everyone
+/// was refunded. Its account stays on chain, so the relaunch is a new lobby with nonce 1.
+#[cfg(not(any(feature = "short-time", feature = "devnet-squadz", feature = "mainnet-rehearsal")))]
+pub const SQUADZ_NONCE: u64 = 1;
+#[cfg(any(feature = "short-time", feature = "mainnet-rehearsal"))]
 pub const SQUADZ_NONCE: u64 = 0;
 /// DEVNET REHEARSAL ONLY: nonce 1 (22 Oct). Devnet's nonce-0 launch #1 already launched $SQUADZ on pump.fun (8 Oct);
 /// $SQUADZ on Meteora is rehearsed as a fresh launch #1.
@@ -184,7 +188,7 @@ pub const SQUADZ_NONCE: u64 = 1;
 /// Launch #1's address, derived from SQUADZ_CREATOR + SQUADZ_NONCE. The
 /// $SQUADZ coin address is read from it once it has launched.
 #[cfg(not(any(feature = "short-time", feature = "devnet-squadz", feature = "mainnet-rehearsal")))]
-pub const SQUADZ_LAUNCH: Pubkey = pubkey!("AGKpwt6KFYAjDf5iqMsWRHqDYHfk2RVXZkJyX9xNBVZ3");
+pub const SQUADZ_LAUNCH: Pubkey = pubkey!("EcsceNEby1rixPAaS9fpzQPEaXSniiw1QA6ErFNsj8sN");
 #[cfg(feature = "mainnet-rehearsal")]
 pub const SQUADZ_LAUNCH: Pubkey = pubkey!("9k89m9bMzMiFw8TosfFS6ovrMZEkoy3WD2B398Cwohn9");
 #[cfg(feature = "short-time")]

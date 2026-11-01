@@ -5,6 +5,10 @@ members = ["programs/*"]
 exclude = ["tests"]
 resolver = "2"
 
+# solana-verify picks its Docker build image from this (verified build, founders 28 Oct option A)
+[workspace.metadata.cli]
+solana = "2.3.13"
+
 [profile.release]
 overflow-checks = true
 lto = "fat"

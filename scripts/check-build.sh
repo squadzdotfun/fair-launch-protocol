@@ -19,7 +19,8 @@ def b58(s):
     for c in s: n = n * 58 + A.index(c)
     return n.to_bytes(32, "big")
 flavors = {  # constants.rs SQUADZ_LAUNCH per build (launch #1's address; the code stores this one, not the creator)
-    "mainnet": "AGKpwt6KFYAjDf5iqMsWRHqDYHfk2RVXZkJyX9xNBVZ3",  # team Squads vault's launch #1 (no features; vault 4pki…, 27 Oct)
+    "old-mainnet": "AGKpwt6KFYAjDf5iqMsWRHqDYHfk2RVXZkJyX9xNBVZ3",  # the first $SQUADZ lobby (nonce 0, expired 31 Oct): no build may hold it now
+    "mainnet": "EcsceNEby1rixPAaS9fpzQPEaXSniiw1QA6ErFNsj8sN",  # team Squads vault's $SQUADZ lobby, round 2 (no features; vault 4pki…, nonce 1, 1 Nov)
     "devnet":  "WFwhb8BDMzzkbSYUgXTzcnceJWBxMbAUypMpqJvRzws",  # devnet-squadz (nonce 1 since 22 Oct: $SQUADZ on Meteora)
     "local":   "EsfgcnFwc7hzqj8XMmP91t17MCNrsdRAgCmu41PmfQLi",  # short-time
     "rehearsal": "9k89m9bMzMiFw8TosfFS6ovrMZEkoy3WD2B398Cwohn9",  # mainnet-rehearsal (test C, 27 Oct): its test launch #1, written by scripts/set-rehearsal.sh
