@@ -1,11 +1,11 @@
-//! Fair Launch Protocol: fair group launches on pump.fun.
+//! Fair Launch Protocol: fair group launches on Solana.
 //!
 //! People pool SOL in 10-50 equal slots. When every slot is filled, the creator
 //! launches: the coin is created on pump.fun with a protocol address as its
 //! creator, and the pool buys the entire bonding curve in the same
 //! transaction, so nobody buys ahead of the group. Every member gets the same
 //! share at the same price. Creator fees then flow through this program
-//! forever. There are no admin keys.
+//! forever. The team multisig holds the upgrade key until it is locked.
 
 use anchor_lang::prelude::*;
 #[cfg(not(feature = "no-entrypoint"))]
